@@ -62,7 +62,7 @@ jobs:
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
         environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
-        user-name: ${{ secrets.USER_NAME }}
+        user-name: 'cwoodland@cwmsft.xyz@org689da359.crm.dynamics.com'
         password-secret: ${{ secrets.USER_PASS }}
         cloud: ${{ inputs.CLOUD_TYPE }}
 
@@ -71,7 +71,7 @@ jobs:
       with:
         environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
         cloud: ${{ inputs.CLOUD_TYPE }}
-        user-name: ${{ secrets.USER_NAME }}
+        user-name: 'cwoodland@cwmsft.xyz@org689da359.crm.dynamics.com'
         password-secret: ${{ secrets.USER_PASS }}
 
         solution-name: ${{ inputs.SOLUTION_NAME }}
