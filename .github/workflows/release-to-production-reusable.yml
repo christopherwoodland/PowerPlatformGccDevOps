@@ -71,11 +71,11 @@ jobs:
     - name: Import solution as unmanaged to build env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: ${{secrets.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{ secrets.AAD_CLIENT_ID }}
-        client-secret: ${{ secrets.AAD_APP_SECRET }}
-        tenant-id: ${{ secrets.AAD_TENANT_ID }}
-        cloud: ${{inputs.CLOUD_TYPE}}
+        environment-url: https://orgb010b9cc.crm.dynamics.com
+        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
+        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
+        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
+        cloud: 'Public'
         solution-file: ${{ inputs.SOLUTION_OUTBOUND_FOLDER}}/${{ inputs.SOLUTION_NAME }}.zip
         force-overwrite: true
         publish-changes: true
@@ -83,11 +83,11 @@ jobs:
     - name: Export solution as managed
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
-        environment-url: ${{secrets.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{ secrets.AAD_CLIENT_ID }}
-        client-secret: ${{ secrets.AAD_APP_SECRET }} 
-        tenant-id: ${{ secrets.AAD_TENANT_ID }}
-        cloud: ${{inputs.CLOUD_TYPE}}
+        environment-url: https://orgb010b9cc.crm.dynamics.com
+        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
+        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
+        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
+        cloud: 'Public'
         solution-name: ${{ inputs.SOLUTION_NAME }}
         managed: true
         solution-output-file: ${{ inputs.SOLUTION_SHIPPING_FOLDER}}/${{ inputs.SOLUTION_NAME }}.zip
@@ -117,11 +117,11 @@ jobs:
     - name: Import solution to prod env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: ${{secrets.PRODUCTION_ENVIRONMENT_URL}}
-        app-id: ${{ secrets.AAD_CLIENT_ID }}
-        client-secret: ${{ secrets.AAD_APP_SECRET }}
-        tenant-id: ${{ secrets.AAD_TENANT_ID }}
-        cloud: ${{inputs.CLOUD_TYPE}}
+        environment-url: https://org8029b648.crm.dynamics.com
+        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
+        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
+        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
+        cloud: 'Public'
         solution-file: ${{ inputs.SOLUTION_RELEASE_FOLDER}}/${{ inputs.SOLUTION_NAME }}.zip
         force-overwrite: true
         publish-changes: true
