@@ -61,8 +61,35 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
-        environment-url: 'https://org689da359.crm.dynamics.com'
-        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
-        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
-        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
-        cloud: 'Public'
+        environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
+        app-id: ${{ secrets.AAD_CLIENT_ID }}
+        client-secret: ${{ secrets.AAD_APP_SECRET }}
+        tenant-id: ${{ secrets.AAD_TENANT_ID }}
+        cloud: ${{ inputs.CLOUD_TYPE }}
+
+    - name: export-solution action
+      uses: microsoft/powerplatform-actions/export-solution@v0
+      with:
+        environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
+        app-id: ${{ secrets.AAD_CLIENT_ID }}
+        client-secret: ${{ secrets.AAD_APP_SECRET }}
+        tenant-id: ${{ secrets.AAD_TENANT_ID }}
+        cloud: ${{ inputs.CLOUD_TYPE }}
+        solution-name: ${{ inputs.SOLUTION_NAME }}
+        solution-output-file: ${{ inputs.SOLUTION_EXPORTS_FOLDER }}${{ inputs.SOLUTION_NAME }}.zip
+
+    - name: unpack-solution action
+      uses: microsoft/powerplatform-actions/unpack-solution@v0
+      with:
+        solution-file: ${{ inputs.SOLUTION_EXPORTS_FOLDER }}${{ inputs.SOLUTION_NAME }}.zip
+        solution-folder: ${{ inputs.SOLUTION_OUTBOUND_FOLDER }}${{ inputs.SOLUTION_NAME }}
+        solution-type: 'Unmanaged'
+        overwrite-files: true
+
+    - name: branch-solution, prepare it for a PullRequest
+      uses: microsoft/powerplatform-actions/branch-solution@v0
+      with:
+        solution-folder: ${{ inputs.SOLUTION_OUTBOUND_FOLDER }}${{ inputs.SOLUTION_NAME }}
+        solution-target-folder: ${{ inputs.SOLUTION_SOURCE_FOLDER }}${{ inputs.SOLUTION_NAME }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        allow-empty-commit: true
