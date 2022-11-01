@@ -61,7 +61,7 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
-        environment-url: 'org689da359.crm.dynamics.com'
+        environment-url: '03e9a9b3-0d81-eccb-af2e-0c7090729411'
         app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
         client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
         tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
