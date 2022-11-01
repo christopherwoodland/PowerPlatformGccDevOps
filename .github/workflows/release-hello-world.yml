@@ -14,7 +14,7 @@ jobs:
       SOLUTION_NAME: HelloWorldCanvasApp
       
       # Public, UsGov, UsGovHigh, UsGovDod
-      CLOUD_TYPE: 'UsGov' 
+      CLOUD_TYPE: 'Public' 
     secrets:
       AAD_APP_SECRET: ${{ secrets.AAD_APP_SECRET }}
       AAD_CLIENT_ID: ${{ secrets.AAD_CLIENT_ID }}
