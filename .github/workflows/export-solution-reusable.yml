@@ -51,7 +51,7 @@ jobs:
       CLIENT_ID: ${{ secrets.AAD_CLIENT_ID }}
       AAD_APP_SECRET: ${{ secrets.AAD_APP_SECRET }}
       TENANT_ID: ${{ secrets.AAD_TENANT_ID }}
-      CLOUD: 'UsGov' # UsGov => GCC, UsGovHigh => GCCH, UsGovDod => DOD
+      CLOUD: 'Public' # UsGov => GCC, UsGovHigh => GCCH, UsGovDod => DOD
 
     steps:
     - uses: actions/checkout@v2
@@ -61,20 +61,20 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
-        environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
-        app-id: ${{ secrets.AAD_CLIENT_ID }}
-        client-secret: ${{ secrets.AAD_APP_SECRET }}
-        tenant-id: ${{ secrets.AAD_TENANT_ID }}
-        cloud: ${{ inputs.CLOUD_TYPE }}
+        environment-url: 'https://org689da359.crm.dynamics.com'
+        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
+        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
+        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
+        cloud: 'Public'
 
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
-        environment-url: ${{ secrets.DEV_ENVIRONMENT_URL }}
-        app-id: ${{ secrets.AAD_CLIENT_ID }}
-        client-secret: ${{ secrets.AAD_APP_SECRET }}
-        tenant-id: ${{ secrets.AAD_TENANT_ID }}
-        cloud: ${{ inputs.CLOUD_TYPE }}
+        environment-url: 'https://org689da359.crm.dynamics.com'
+        app-id: 'aa254051-a7e1-436c-b278-364091c038fe'
+        client-secret: 'm7S8Q~mRINRtwJqlXypq4MVwOqzBBkR3lhKCwdgA'
+        tenant-id: '3d6eb90f-fb5d-4624-99d7-1b8c4e077d07'
+        cloud: 'Public'
         solution-name: ${{ inputs.SOLUTION_NAME }}
         solution-output-file: ${{ inputs.SOLUTION_EXPORTS_FOLDER }}${{ inputs.SOLUTION_NAME }}.zip
 
